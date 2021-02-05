@@ -1,0 +1,18 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+:host ::ng-deep nbng2-st-tbody-custom {display: flex;}
+
+:host ::ng-deep ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+
+}
+:host ::ng-deep  ng2-smart-table .ng2-smart-actions {
+  padding: 0;
+  height: 1px;
+  display: inline;
+}

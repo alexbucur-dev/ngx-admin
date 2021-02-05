@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Add Products</nb-card-header>
+      <nb-card-body>
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label for="name" class="label col-sm-3 form-control-label">Name...</label>
+            <div class="col-sm-9">
+              <input type="text" value="{{data.name}}" nbInput fullWidth id="name" placeholder="Name" name="name" (change)="onSave($event)" (click)="editInfo($event)">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="price" class="label col-sm-3 form-control-label">Price...</label>
+            <div class="col-sm-9">
+              <input nbInput value="{{data.price}}" fullWidth id="price" placeholder="Price" name="price" (change)="onSave($event)" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <ng-container *ngIf="todoService.todos$ | async as todos">
+              <label for="category_id" class="label col-sm-3 form-control-label">Categories:</label>
+              <div class="col-sm-9" >
+                <nb-select [placeholder]="data.category_name"  [ngModel]="todos" (selectedChange)="onSaveCategory($event)" name="category_id">
+                  <nb-option *ngFor="let todo of todos" [value]="todo.id">{{todo.name}}</nb-option>
+                </nb-select>
+              </div>
+            </ng-container>
+          </div>
+          <div class="form-group row">
+            <label for="description" class="label col-sm-3 form-control-label">Description</label>
+            <div class="col-sm-9">
+              <textarea value="{{data.description}}" rows="5" nbInput fullWidth shape="round"  placeholder="Description" name="description" (change)="onSave($event)" required></textarea >
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-sm-3 col-sm-9">
+              <button type="button" nbButton status="warning" (click)="addData($event)">Submit</button>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
